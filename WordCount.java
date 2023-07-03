@@ -38,7 +38,7 @@ import org.apache.beam.sdk.values.KV;
 import org.apache.beam.sdk.values.PCollection;
 import org.json.JSONObject;
 import org.apache.beam.examples.JsonUrlReader2;
-import org.apache.beam.examples.ExpresoSantiago;
+import org.apache.beam.examples.Recorridos;
 public class WordCount {
 
 
@@ -52,7 +52,7 @@ public class WordCount {
         public void processElement(@Element String element, OutputReceiver<String> receiver) throws DatabindException, MalformedURLException, IOException {
 
             System.out.println("Invocando a JsonUrlReader");
-            ArrayList<ExpresoSantiago> Aes;
+            ArrayList<Recorridos> Aes;
 
             JsonUrlReader2 j = new JsonUrlReader2();
 
@@ -60,7 +60,7 @@ public class WordCount {
 
             System.out.println("Finalizando carga URL JsonUrlReader");
 
-            for (ExpresoSantiago es : Aes) {
+            for (Recorridos es : Aes) {
 
                 
                 String word = es.toCSV();
