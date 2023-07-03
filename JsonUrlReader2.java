@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 
-import org.apache.beam.examples.ExpresoSantiago;
+import org.apache.beam.examples.Recorridos;
 
 public class JsonUrlReader2 {
 
@@ -23,29 +23,29 @@ public class JsonUrlReader2 {
 
     public static void main(String[] args) throws DatabindException, MalformedURLException, IOException {
         JsonUrlReader2 j = new JsonUrlReader2();
-        ArrayList<ExpresoSantiago> Atp = j.cargarURLx();
+        ArrayList<Recorridos> Atp = j.cargarURLx();
 
-        for (ExpresoSantiago tp : Atp) {
+        for (Recorridos tp : Atp) {
             System.out.println(tp);
         }
     }
 
-    public ArrayList<ExpresoSantiago> cargarURLx() throws StreamReadException, DatabindException, MalformedURLException, IOException {
+    public ArrayList<Recorridos> cargarURLx() throws StreamReadException, DatabindException, MalformedURLException, IOException {
         String url_recorrido = "https://www.red.cl/restservice_v2/rest/getservicios/all";
-        ArrayList<ExpresoSantiago> Aes = new ArrayList<>();
+        ArrayList<Recorridos> Aes = new ArrayList<>();
         ObjectMapper mapper = new ObjectMapper();
         JsonNode elementos_recorrido = mapper.readTree(new URL(url_recorrido));
 
-        //AGREGANDO DATOS IDA
+        //ida
         for (JsonNode recorrido_x : elementos_recorrido) {
-            String url = "https://www.red.cl/restservice_v2/rest/conocerecorrido?codsint=" + recorrido_x.asText(); //API EXPRESO DE SANTIAGO
+            String url = "https://www.red.cl/restservice_v2/rest/conocerecorrido?codsint=" + recorrido_x.asText(); //API 
             JsonNode elementos = mapper.readTree(new URL(url));
             JsonNode negocio = elementos.get("negocio");
             JsonNode ida = elementos.get("ida");
             JsonNode regreso = elementos.get("regreso");
 
             if (ida == null) {
-                ExpresoSantiago es = new ExpresoSantiago();
+                Recorridos es = new Recorridos();
                 es.setRecorrido(recorrido_x.asText());
                 es.setId_empresa(negocio.get("id").asText());
                 es.setNombre_empresa(negocio.get("nombre").asText());
@@ -66,7 +66,7 @@ public class JsonUrlReader2 {
                         JsonNode paradero_ida = ida.get("paraderos");
 
                         for (JsonNode paradero : paradero_ida) {
-                            ExpresoSantiago es = new ExpresoSantiago();
+                            Recorridos es = new Recorridos();
                             es.setRecorrido(recorrido_x.asText());
                             es.setId_empresa(negocio.get("id").asText());
                             es.setNombre_empresa(negocio.get("nombre").asText());
@@ -86,7 +86,7 @@ public class JsonUrlReader2 {
                 }
             }
             if (regreso == null) {
-                ExpresoSantiago es = new ExpresoSantiago();
+                Recorridos es = new Recorridos();
                 es.setRecorrido(recorrido_x.asText());
                 es.setId_empresa(negocio.get("id").asText());
                 es.setNombre_empresa(negocio.get("nombre").asText());
@@ -102,13 +102,13 @@ public class JsonUrlReader2 {
                 Aes.add(es);
             } else {
                 JsonNode regreso_horario = regreso.get("horarios");
-                //AGREGANDO DATOS VUELTA
+                //dato vuelta
                 if (regreso_horario.isArray()) {
                     for (JsonNode horario : regreso_horario) {
                         JsonNode paradero_regreso = regreso.get("paraderos");
 
                         for (JsonNode paradero : paradero_regreso) {
-                            ExpresoSantiago es = new ExpresoSantiago();
+                            Recorridos es = new Recorridos();
                             es.setRecorrido(recorrido_x.asText());
                             es.setId_empresa(negocio.get("id").asText());
                             es.setNombre_empresa(negocio.get("nombre").asText());
