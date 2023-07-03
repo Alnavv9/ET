@@ -95,7 +95,7 @@ public class WordCount {
     public interface WordCountOptions extends PipelineOptions {
 
         @Description("Path of the file to read from")
-        @Default.String("gs://dataflow-apache-quickstart_etbigdatabd/entrada/leo.txt")
+        @Default.String("gs://dataflow-apache-quickstart_bigdata-3-390222/entrada/buses.txt")
         String getInputFile();
 
         void setInputFile(String value);
