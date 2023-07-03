@@ -1,6 +1,6 @@
 package org.apache.beam.examples;
 
-public class ExpresoSantiago {
+public class Recorridos {
 
    private String recorrido;
     private String id_empresa;
@@ -14,7 +14,7 @@ public class ExpresoSantiago {
     private String comuna_paradero;
     private String destino;
 
-    public ExpresoSantiago() {
+    public Recorridos() {
     }
 
     public String getId_empresa() {
@@ -108,7 +108,7 @@ public class ExpresoSantiago {
 
     @Override
     public String toString() {
-        return "ExpresoSantiago{" + "recorrido=" + recorrido + ", id_empresa=" + id_empresa + ", nombre_empresa=" + nombre_empresa + ", id_ida=" + id_ida + ", tipo_dia=" + tipo_dia + ", inicio_dia=" + inicio_dia + ", fin_dia=" + fin_dia + ", paradero=" + paradero + ", cod_paradero=" + cod_paradero + ", comuna_paradero=" + comuna_paradero + ", destino=" + destino + '}';
+        return "Recorridos{" + "recorrido=" + recorrido + ", id_empresa=" + id_empresa + ", nombre_empresa=" + nombre_empresa + ", id_ida=" + id_ida + ", tipo_dia=" + tipo_dia + ", inicio_dia=" + inicio_dia + ", fin_dia=" + fin_dia + ", paradero=" + paradero + ", cod_paradero=" + cod_paradero + ", comuna_paradero=" + comuna_paradero + ", destino=" + destino + '}';
     }
 
   
